@@ -1,0 +1,85 @@
+.btns{
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    padding: 0 50px;
+}
+
+.btns button{
+    width: 30%;
+    height: 50px;
+    cursor: pointer;
+    border: none;
+    background-color: var(--primary-color);
+    border-radius: 10px;
+    font-weight: 600;
+    color: #fff;
+    transition: .5s;
+    font-size: 15px;
+}
+button:hover{
+    filter: brightness(.9);
+}
+.container-etapas{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+}
+
+.etapa{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    justify-content: center;
+    align-items: center;
+}
+.etapa label{
+    margin: 10px 0;
+    width: 80%;
+    font-weight: 600;
+    color: #494949;
+}
+.etapa input{
+    width: 90%;
+    border: none;
+    background-color: #dfdfdf;
+    height: 40px;
+    border-radius: 5px;
+    font-size: 18px;
+    margin: 20px 0;
+    padding: 0 15px;
+}
+.etapa h1{
+    color: #ff0062;
+}
+.etapa p{
+    width: 80%;
+    text-align: center;
+    margin: 10px 0;
+    font-size: 18px;
+    color: #494949;
+}
+
+.dots{
+    display: flex;
+    justify-content: center;
+    padding: 0 50px;
+    width: 80%;
+    margin: 50px auto;
+    
+}
+.dot{
+    border: 1px var(--primary-color) solid;
+    width:50px;
+    height: 50px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    margin: 0 20px;
+}
