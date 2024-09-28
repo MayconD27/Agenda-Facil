@@ -12,26 +12,24 @@
         <div class="container-etapas">
         <!--Etapa 1-->    
         <div class="etapa" id="etapa1">
-                <h1>Bem vindo</h1>
-                <p>
-                 <input type="text" id="nome">
-
+            <?php include_once 'etapas/passo01.php'; ?>
 
         </div>
 
         <!--Etapa 2--> 
         <div class="etapa" id="etapa2" style="display: none;">
-            <h2>Ola <span id="valNome"></span></h2>
+            <?php include_once 'etapas/passo02.php'; ?>
+            
         </div>
 
         <!--Etapa 3--> 
         <div class="etapa" id="etapa3" style="display: none;">
-            <h2>Etapa 3</h2>
+            <?php include_once 'etapas/passo03.php'; ?>
         </div>
 
         <!--Etapa Final--> 
         <div class="etapa" id="etapaEnd" style="display: none;">
-            <h1>Conclusão</h1>
+            <?php include_once 'etapas/conclusao.php' ?>
         </div>
     </div>
 
