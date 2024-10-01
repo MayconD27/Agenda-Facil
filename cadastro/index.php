@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../main-style/index.css">
     <link rel="stylesheet" href="style/container.css">
-    <title>Go</title>
+    <title>Cadastro de Horario</title>
 </head>
 <body>
     <form>

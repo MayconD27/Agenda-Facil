@@ -70,6 +70,7 @@ button:hover{
     padding: 0 50px;
     width: 80%;
     margin: 50px auto;
+    transition: .5s;
     
 }
 .dot{
@@ -82,4 +83,9 @@ button:hover{
     border-radius: 50%;
     background-color: var(--primary-color);
     margin: 0 20px;
+    transition: .3s;
+}
+
+#dot2,#dot3{
+    opacity: 0;
 }

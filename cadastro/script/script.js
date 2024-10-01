@@ -12,7 +12,6 @@ const etapaEnd = document.querySelector('#etapaEnd');
 const dot1 = document.querySelector('#dot1');
 const dot2 = document.querySelector('#dot2');
 const dot3 = document.querySelector('#dot3');
-
 let counter = 1;
 //Evento do botão next
 btnNext.addEventListener('click',()=>{
@@ -54,7 +53,11 @@ function StepEtapa(value){
         dot1.style.display = 'flex';
         dot2.style.display = 'none';  
 
-        
+
+        setTimeout(() => {
+            dot1.style.opacity = 1;
+            dot2.style.opacity = 0;
+        }, 300);
     }
     
     if(value==2){
@@ -67,6 +70,12 @@ function StepEtapa(value){
         dot2.style.display = 'flex'; 
         dot3.style.display = 'none';  
         
+        setTimeout(() => {
+            dot2.style.opacity = 1;
+            dot3.style.opacity = 0;
+        }, 300);
+
+
     }
 
     if(value==3){
@@ -76,7 +85,11 @@ function StepEtapa(value){
         etapa2.style.display = 'none';
         etapaEnd.style.display = 'none';
 
-        dot3.style.display = 'flex';          
+        dot3.style.display = 'flex';    
+        
+        setTimeout(() => {
+            dot3.style.opacity = 1;
+        }, 300);
     }
 
     if(value==4){
