@@ -1,1 +1,1 @@
-<h2>Ola <span id="valNome"></span></h2>
+<h2>Olá <span id="valNome"></span></h2>
