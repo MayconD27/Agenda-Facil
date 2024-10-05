@@ -8,10 +8,6 @@ const etapa2 = document.querySelector('#etapa2');
 const etapa3 = document.querySelector('#etapa3');
 const etapaEnd = document.querySelector('#etapaEnd');
 
-//dots
-const dot1 = document.querySelector('#dot1');
-const dot2 = document.querySelector('#dot2');
-const dot3 = document.querySelector('#dot3');
 let counter = 1;
 //Evento do botão next
 btnNext.addEventListener('click',()=>{
@@ -82,7 +78,7 @@ function StepEtapa(value){
         etapa1.style.display = 'none';
         etapa2.style.display = 'none';
         etapa3.style.display = 'none';  
-        
+        document.querySelector('#dots').style.display = 'none';
 
 
     }
