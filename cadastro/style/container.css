@@ -64,28 +64,3 @@ button:hover{
     color: #494949;
 }
 
-.dots{
-    display: flex;
-    justify-content: center;
-    padding: 0 50px;
-    width: 80%;
-    margin: 50px auto;
-    transition: .5s;
-    
-}
-.dot{
-    border: 1px var(--primary-color) solid;
-    width:50px;
-    height: 50px;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    background-color: var(--primary-color);
-    margin: 0 20px;
-    transition: .3s;
-}
-
-#dot2,#dot3{
-    opacity: 0;
-}

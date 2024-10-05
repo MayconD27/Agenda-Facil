@@ -27,6 +27,7 @@ btnNext.addEventListener('click',()=>{
         btnNext.style.display = 'none';
     }
     StepEtapa(counter);
+    intDots(50);
 })
 
 //Evendo de botão back
@@ -39,6 +40,7 @@ btnBack.addEventListener('click',()=>{
         btnNext.innerHTML = 'Próximo';
     }
     StepEtapa(counter);
+    intDots(-50);
 })
 
 //Pular as etapas
@@ -50,14 +52,7 @@ function StepEtapa(value){
         etapa3.style.display = 'none';
         etapaEnd.style.display = 'none';
 
-        dot1.style.display = 'flex';
-        dot2.style.display = 'none';  
 
-
-        setTimeout(() => {
-            dot1.style.opacity = 1;
-            dot2.style.opacity = 0;
-        }, 300);
     }
     
     if(value==2){
@@ -67,13 +62,7 @@ function StepEtapa(value){
         etapa3.style.display = 'none';
         etapaEnd.style.display = 'none';
 
-        dot2.style.display = 'flex'; 
-        dot3.style.display = 'none';  
-        
-        setTimeout(() => {
-            dot2.style.opacity = 1;
-            dot3.style.opacity = 0;
-        }, 300);
+
 
 
     }
@@ -85,11 +74,6 @@ function StepEtapa(value){
         etapa2.style.display = 'none';
         etapaEnd.style.display = 'none';
 
-        dot3.style.display = 'flex';    
-        
-        setTimeout(() => {
-            dot3.style.opacity = 1;
-        }, 300);
     }
 
     if(value==4){
@@ -100,10 +84,7 @@ function StepEtapa(value){
         etapa3.style.display = 'none';  
         
 
-        //Apaga as dots
-        dot1.style.display = 'none';
-        dot2.style.display = 'none';
-        dot3.style.display = 'none';
+
     }
     
 }

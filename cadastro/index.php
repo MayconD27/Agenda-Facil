@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../main-style/index.css">
     <link rel="stylesheet" href="style/container.css">
+    <link rel="stylesheet" href="style/dots.css">
     <title>Cadastro de Horario</title>
 </head>
 <body>
@@ -40,11 +41,9 @@
         </div>
 
 </form>
-<div class="dots">
-    <div class="dot" id="dot1" style="display:flex">1</div>
-    <div class="dot" id="dot2" style="display:none">2</div>
-    <div class="dot" id="dot3"style="display:none">3</div>
-                </div>
+<?php include_once 'dots/dot.php'?>
+
+
 
     <script src="script/script.js"></script>
     <script src="script/intera.js"></script>
