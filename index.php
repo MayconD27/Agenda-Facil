@@ -25,7 +25,18 @@
         </nav>
 
         <section class="agendamentos">
-
+            <div class="container-card">
+            <div class="card-agnd">
+                <h3>Nome da cliente</h3>
+                <h4>procedimento</h4>
+                <div class="horario">
+                    <p>dd/mm/yyyy</p>
+                    <span>00:00</span>
+                </div>
+                
+            </div>
+            </div>
+            
         </section>
 
         <!--Botão que direciona para tela de cadastro-->

@@ -52,3 +52,36 @@ legend{
     right: 5%;
     bottom: 5%;
 }
+.agendamentos{
+    width: 100%;
+    height: 90vh;
+}
+.container-card{
+    width: 80%;
+    display: flex;
+}
+.card-agnd{
+    width: 80%;
+    padding: 10px 5px;
+    border-radius: 5px;
+    box-shadow: 0px 2px 10px #dad1d9;
+}
+.card-agnd h3{
+    font-size: 20px;
+    color: var(--primary-color);
+    font-weight: bolder;
+
+}
+.card-agnd h4{
+    font-size: 15px;
+    color: var(--second-color);
+}
+.card-agnd .horario{
+    font-size: 12px;
+    display: flex;
+
+    gap: 15px;
+}
+.horario span{
+    margin: 0 15px;
+}
