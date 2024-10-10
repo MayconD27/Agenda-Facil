@@ -59,6 +59,8 @@ legend{
 .container-card{
     width: 80%;
     display: flex;
+    gap: 10px;
+    align-items: center;
 }
 .card-agnd{
     width: 80%;
@@ -84,4 +86,15 @@ legend{
 }
 .horario span{
     margin: 0 15px;
+}
+.link-whats{
+    background-color: var(--primary-color);
+    color: var(--bkg-color);
+    font-size: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
