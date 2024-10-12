@@ -26,8 +26,10 @@ button:hover{
     display: flex;
     width: 100%;
     justify-content: center;
-    align-items: center;
-    height: 50vh;
+    align-items: start;
+    height: 60vh;
+    padding-top: 50px;
+    margin: 50px auto;
 }
 
 .etapa{
@@ -48,13 +50,17 @@ button:hover{
     border: none;
     background-color: #dfdfdf;
     height: 40px;
-    border-radius: 5px;
+    border-radius: 20px;
     font-size: 18px;
     margin: 20px 0;
     padding: 0 15px;
 }
 .etapa h1{
-    color: #ff0062;
+    color: var(--primary-color);
+    text-align: start;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
 }
 .etapa p{
     width: 80%;
@@ -63,4 +69,22 @@ button:hover{
     font-size: 18px;
     color: #494949;
 }
+.tel{
 
+    display: flex;
+    width: 90%;
+    gap: 10px;
+}
+
+.tel .ddd{
+    width: 10%;
+    min-width: 70px;
+    text-align: center;
+
+}
+#process{
+    font-size: 14px;
+    width: 90%;
+    text-align: justify;
+    color: var(--primary-color);
+}
