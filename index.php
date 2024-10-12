@@ -37,6 +37,20 @@
                 </div>
                 <a href="https://wa.me/<número>?text=<mensagem>" class="link-whats"><i class="bi bi-whatsapp"></i></a>
             </div>
+
+            <div class="container-card">
+                <div class="card-agnd">
+                    <h3>Nome da cliente</h3>
+                    <h4>procedimento</h4>
+                    <div class="horario">
+                        <p>dd/mm/yyyy</p>
+                        <span>00:00</span>
+                    </div>
+                    
+                </div>
+                <a href="https://wa.me/<número>?text=<mensagem>" class="link-whats"><i class="bi bi-whatsapp"></i></a>
+            </div>
+
             
         </section>
 
