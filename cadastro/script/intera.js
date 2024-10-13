@@ -66,9 +66,20 @@ numTel.addEventListener('change',()=>{
 });
 
 
+const mes = document.querySelector('#data');
+mes.addEventListener('change',()=>{
 
+    const dia = diasNoMes(mes.value);
+    let numDia = document.querySelector('#numDia');
+    numDia.innerHTML = '';
+    numDia.value = dia;
 
-function diasNoMes(mes, ano) {
-    var data = new Date(ano, mes, 0);
+    for(let i =1; i<=dia;i++){
+        numDia.innerHTML += `<option value="${i}">${i}</option>`;
+    }
+})
+
+function diasNoMes(mes) {
+    var data = new Date(2024, mes, 0);
     return data.getDate();
 }

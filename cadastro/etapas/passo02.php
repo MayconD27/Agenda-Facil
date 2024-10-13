@@ -14,5 +14,6 @@
         <option value="11">Novembro</option>
         <option value="12">Dezembro</option>
     </select>
-    <input type="number" name="numDia" id="numDia">
+    <select type="number" name="numDia" id="numDia">
+    </select>
 </div>
