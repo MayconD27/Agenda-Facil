@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="../main-style/index.css">
     <title>Pratica tela de login</title>
 </head>
 
@@ -14,7 +15,7 @@
     <div class="container" id="container">
         <div class="form-container sign-up">
             <form>
-                <h1>Crie uma conta</h1>
+                <h1>Agenda Facil</h1>
                 <div class="social-icons">
                     <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
                     <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
@@ -31,16 +32,10 @@
         <div class="form-container sign-in">
             <form>
                 <h1>Login</h1>
-                <div class="social-icons">
-                    <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
-                    <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
-                    <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
-                    <a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
-                </div>
+
                 <span>Use seus dados ja cadastrados.</span>
                 <input type="email" placeholder="Email">
                 <input type="password" placeholder="Senha">
-                <a href="#">Esqueceu sua senha?</a>
                 <button>Entrar</button>
             </form>
         </div>
@@ -52,7 +47,7 @@
                     <button class="hidden" id="login"> Entrar</button>
                 </div>
                 <div class="toggle-panel toggle-right">
-                    <h1>Criar nova conta</h1>
+                    <h1>Agenda Fácil</h1>
                     <p>Registre com seus dados pessoais para facilitar futuros agendamentos.</p>
                     <button class="hidden" id="register"> Cadastrar</button>
                 </div>

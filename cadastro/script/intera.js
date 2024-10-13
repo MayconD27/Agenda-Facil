@@ -48,11 +48,6 @@ function intDots(val){
 const numTel = document.querySelector('#num-tel');
 
 numTel.addEventListener('change',()=>{
-    
-});
-
-
-function ModoNum(){
     let tamNum = numTel.value.length;
     if(tamNum===9){
 
@@ -67,5 +62,13 @@ function ModoNum(){
     
         numTel.value = numComple;
     }
+    
+});
 
+
+
+
+function diasNoMes(mes, ano) {
+    var data = new Date(ano, mes, 0);
+    return data.getDate();
 }
