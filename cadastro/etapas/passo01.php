@@ -3,7 +3,7 @@
 
 <div class="tel">
     <input type="text" placeholder="DDD" class="ddd" name="ddd" maxlength=2> 
-    <input type="text" placeholder="Telefone (Apenas números)" name="nm-tel" class="num-tel">
+    <input type="text" placeholder="Telefone (Apenas números)" name="num-tel" id="num-tel" onchange="ModoNum()" class="num-tel" maxlength=9>
 </div>
 <input type="text" placeholder="procedimento">
 
