@@ -15,18 +15,20 @@
         <div class="form-container sign-up">
             <form>
                 <h1>Agenda Facil</h1>
-                <span>Ou use seus dados para se registrar.</span>
-                <input type="text" placeholder="Nome">
-                <input type="email" placeholder="Email">
-                <input type="password" placeholder="Senha">
-                <button>Cria conta</button>
+                <p class="desc">Veja sobre as vantagens do nosso appp</p>
+                <ul class="listaApp">
+                    <li>Feito para facilitar sua vida</li>
+                    <li>Mais praticidade</li>
+                    <li>Intuitivo</li>
+                    <li>Dinamico</li>
+                </ul>
             </form>
         </div>
         <div class="form-container sign-in">
             <form>
                 <h1>Login</h1>
 
-                <span>Use seus dados ja cadastrados.</span>
+                <p class="desc">Use seus dados ja cadastrados.</p>
                 <input type="email" placeholder="Email">
                 <input type="password" placeholder="Senha">
                 <button>Entrar</button>
@@ -35,14 +37,14 @@
         <div class="toggle-container">
             <div class="toggle">
                 <div class="toggle-panel toggle-left">
-                    <h1>Bem vindo de volta!</h1>
+                    <h1>Voltar ao Login</h1>
                     <p>Entre com seus dados ja cadastrados.</p>
                     <button class="hidden" id="login"> Entrar</button>
                 </div>
                 <div class="toggle-panel toggle-right">
                     <h1>Agenda Fácil</h1>
-                    <p>Registre com seus dados pessoais para facilitar futuros agendamentos.</p>
-                    <button class="hidden" id="register"> Cadastrar</button>
+                    <p>Veja as funcionalidades do nosso app.</p>
+                    <button class="hidden" id="register">Saiba mais</button>
                 </div>
             </div>
         </div>
