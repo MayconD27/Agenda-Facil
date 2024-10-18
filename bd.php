@@ -1,10 +1,10 @@
 <?php
 
 
-define('DB_SERVER', 'localhost');
+define('DB_SERVER', '77.185.252.253:61053');
 define('DB_USERNAME', 'root');
-define('DB_PASSWORD', '');
-define('DB_NAME', 'spt');
+define('DB_PASSWORD', 'knPoR91sa3ua9');
+define('DB_NAME', 'agendaFacil');
 
 
 
