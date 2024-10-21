@@ -65,21 +65,79 @@ numTel.addEventListener('change',()=>{
     
 });
 
+// Seleciona o elemento de inputs
+const dataCadastro = document.querySelector('#dataCadastro');
+const horariosDisponiveisSelect = document.querySelector('#horariosDisponiveis');
+const quantidadeSelect = document.querySelector('#quantidadeHorarios');
 
-const mes = document.querySelector('#data');
-mes.addEventListener('change',()=>{
 
-    const dia = diasNoMes(mes.value);
-    let numDia = document.querySelector('#numDia');
-    numDia.innerHTML = '';
-    numDia.value = dia;
+dataCadastro.addEventListener('change', () => {
+    const valData = dataCadastro.value;
 
-    for(let i =1; i<=dia;i++){
-        numDia.innerHTML += `<option value="${i}">${i}</option>`;
+    // Se não houver data selecionada, sai da função
+    if (!valData) return;
+
+    // Faz uma requisição ao servidor para obter os horários disponíveis nessa data
+    fetch(`../consulta.php?data=${valData}`)
+        .then(response => {
+            // Verifica se a resposta da requisição está ok
+            if (!response.ok) throw new Error('Network response was not ok');
+            return response.json(); // Converte a resposta para JSON
+        })
+        .then(({ success, data, error }) => {
+            // Se a consulta não foi bem-sucedida, exibe o erro
+            if (!success) {
+                console.error('Erro:', error);
+                return;
+            }
+            updateHorariosSelect(data);
+        })
+        .catch(error => console.error('Erro na requisição:', error)); // Captura e exibe erros da requisição
+});
+
+
+const updateHorariosSelect = (horarios) => {
+
+    horariosDisponiveisSelect.innerHTML = '<option value="">Selecione um horário</option>';
+    horarios.forEach(horario => {
+        const option = document.createElement('option'); 
+        option.value = horario;
+        option.textContent = horario;
+        horariosDisponiveisSelect.appendChild(option);
+    });
+};
+
+// Adiciona um evento de mudança no select de horários disponíveis
+
+// Adiciona o listener para o select de horários
+horariosDisponiveisSelect.addEventListener('change', () => {
+    const horarioSelecionado = horariosDisponiveisSelect.value;
+    const valData = dataCadastro.value;
+
+    if (!horarioSelecionado || !valData) return;
+
+    fetch(`../consulta_qnt_horario.php?data=${valData}&horario=${horarioSelecionado}`)
+        .then(response => {
+            if (!response.ok) throw new Error('Network response was not ok');
+            return response.json();
+        })
+        .then(({ success, quantidade, error }) => {
+            if (!success) {
+                console.error('Erro:', error);
+                return;
+            }
+            updateQuantidadeSelect(quantidade);
+        })
+        .catch(error => console.error('Erro na requisição para quantidade:', error));
+});
+
+// Atualiza o select de quantidade
+const updateQuantidadeSelect = (quantidade) => {
+    quantidadeSelect.innerHTML = '<option value="">Selecione a quantidade</option>';
+    for (let i = 1; i <= quantidade; i++) {
+        const option = document.createElement('option');
+        option.value = i;
+        option.textContent = i;
+        quantidadeSelect.appendChild(option);
     }
-})
-
-function diasNoMes(mes) {
-    var data = new Date(2024, mes, 0);
-    return data.getDate();
-}
+};
