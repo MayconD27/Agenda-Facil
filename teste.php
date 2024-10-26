@@ -1,26 +1,37 @@
 <?php
+include 'bd.php'; // Inclua sua conexão com o banco de dados aqui
 
-$ocupados = ['09:00:00', '10:00:00', '11:00:00'];
-$selecionado = '08:00:00';
-$quantidade = 0;
+// Defina a data de teste
+$data = '2024-10-20'; // Exemplo de data
 
-$todosHorarios = array_map(fn($i) => sprintf('%02d:00:00', $i), range(7, 19));
+// Busca agendamentos na data especificada
+$stmt = $bd->prepare("SELECT horario, qnt_horario FROM agendamento WHERE data = :data");
+$stmt->execute([':data' => $data]);
+$agendamentos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-foreach ($todosHorarios as $horario) {
-    if (in_array($horario, $ocupados)) {
-        echo "O horário $horario está ocupado.\n";
-    } else {
-        echo "O horário $horario está disponível.\n";
-    }
-
-    if (strtotime($horario) >= strtotime($selecionado) && !in_array($horario, $ocupados)) {
-        $quantidade++;
-    }
-
-    if (strtotime($horario) >= strtotime($selecionado) && in_array($horario, $ocupados)) {
-        break;
+// Armazenar horários ocupados
+$ocupados = [];
+foreach ($agendamentos as $agendamento) {
+    $horario = $agendamento['horario'];
+    $quantidade = $agendamento['qnt_horario'];
+    
+    // Adiciona o horário ocupado e os próximos horários com base na quantidade
+    for ($i = 0; $i < $quantidade; $i++) {
+        $proximoHorario = date('H:i:s', strtotime($horario) + ($i * 3600)); // Aumenta em 1 hora
+        $ocupados[] = $proximoHorario; // Armazena o horário ocupado
     }
 }
 
-echo "Quantidade de horários disponíveis a partir de $selecionado: " . $quantidade;
+// Todos os horários disponíveis
+$todosHorarios = array_map(fn($i) => sprintf('%02d:00:00', $i), range(7, 19));
+
+// Preparar horários disponíveis
+$horariosDisponiveis = [];
+foreach ($todosHorarios as $h) {
+    if (!in_array($h, $ocupados)) {
+        $horariosDisponiveis[] = $h; // Adiciona horários que não estão ocupados
+    }
+}
+
+// Você pode usar as variáveis $ocupados e $horariosDisponiveis conforme necessário
 ?>

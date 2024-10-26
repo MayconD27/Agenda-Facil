@@ -9,14 +9,30 @@ $response = ['success' => false];
 
 if (preg_match('/^\d{4}-\d{2}-\d{2}$/', $data) && preg_match('/^\d{2}:\d{2}:\d{2}$/', $horario)) {
     
-    $stmt = $bd->prepare("SELECT horario FROM agendamento WHERE data = :data");
+    // Busca os agendamentos na data especificada
+    $stmt = $bd->prepare("SELECT horario, qnt_horario FROM agendamento WHERE data = :data");
     $stmt->execute([':data' => $data]);
-    $ocupados = $stmt->fetchAll(PDO::FETCH_COLUMN);
+    $agendamentos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+    // Armazenar horários ocupados e suas quantidades
+    $ocupados = [];
+    foreach ($agendamentos as $agendamento) {
+        $horarioOcupado = $agendamento['horario'];
+        $quantidade = $agendamento['qnt_horario'];
+        
+        // Adiciona o horário ocupado e os próximos horários com base na quantidade
+        for ($i = 0; $i < $quantidade; $i++) {
+            $proximoHorario = date('H:i:s', strtotime($horarioOcupado) + ($i * 3600)); // Aumenta em 1 hora
+            $ocupados[] = $proximoHorario; // Armazena o horário ocupado
+        }
+    }
+
+    // Todos os horários disponíveis
     $todosHorarios = array_map(fn($i) => sprintf('%02d:00:00', $i), range(7, 19));
     
     $quantidade = 0;
 
+    // Contar horários disponíveis a partir do horário selecionado
     foreach ($todosHorarios as $h) {
         if (strtotime($h) >= strtotime($horario)) {
             if (in_array($h, $ocupados)) {
