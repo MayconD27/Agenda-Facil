@@ -13,47 +13,85 @@
 <body>
     <main class="container-main">
         <nav class="menu">
-            <button>Hoje</button>
+            <div class="dia">
+                <div class="antes"><</div>
+                <button>Hoje</button>
+                <div class="depois">></div>
+            </div>
+            
             
             <form action="">
             <div>
-                <legend>Filtrar data</legend>
                 <input type="date">
-                <button>Filtrar</button>
+                <button>Filtrar pela data</button>
             </div>
             </form>
         </nav>
+        <table>
+            <thead>
+                <tr class="cabecalho">
+                    <th>Horario</th>
+                    <th>Cliente</th>
+                    <th>Contato</th>
+                    <th><i class="bi bi-gear"></i></th>
+                </tr>
 
-        <section class="agendamentos">
-            <div class="container-card">
-                <div class="card-agnd">
-                    <h3>Nome da cliente</h3>
-                    <h4>procedimento</h4>
-                    <div class="horario">
-                        <p>dd/mm/yyyy</p>
-                        <span>00:00</span>
-                    </div>
+            </thead>
+            <tbody>
+                <?php
+                    include_once './bd.php';
+                    $num = 7;
+
+                    while ($num <= 19) {
+                        
+                        if($num ==15){
+                            echo "
+                            <tr class='linhaCorpo'>
+                                <td class='lineHorario'>$num:00</td>
+                                <td  class='vago' colspan='3'>Horario Vago</td>
+                            </tr>
+                            ";         
+                        }
+                        if ($num == 8) {
+                            echo "
+                            <tr class='linhaCorpo'>
+                                <td class='lineHorario'>$num:00</td>
+                                <td rowspan='2'>Cliente $num</td>
+                                <td rowspan='2'>Telefone $num</td>
+                                <td rowspan='2'class='ferramentas'>
+                                    <a href='' class='trash' data-bs-toggle='tooltip' data-bs-placement='right' data-bs-title='Apagar'><i class='bi bi-trash'></i></a>
+                                    <a href='' class='contact' data-bs-toggle='tooltip' data-bs-placement='right' data-bs-title='Enviar mensagem'><i class='bi bi-whatsapp'></i></a>
+                                </td>
+                            </tr>
+                            ";
+                            // Linha seguinte com horário diferente
+                            $num++;
+                            echo "
+                            <tr class='linhaCorpo'>
+                                <td class='lineHorario'>$num:00</td>
+                            </tr>
+                            ";
+                        } else {
+                            echo "
+                            <tr class='linhaCorpo'>
+                                <td class='lineHorario'>$num:00</td>
+                                <td>Cliente $num</td>
+                                <td>Telefone $num</td>
+                                <td class='ferramentas'>
+                                    <a href='' class='trash' data-bs-toggle='tooltip' data-bs-placement='right' data-bs-title='Apagar'><i class='bi bi-trash'></i></a>
+                                    <a href='' class='contact' data-bs-toggle='tooltip' data-bs-placement='right' data-bs-title='Enviar mensagem'><i class='bi bi-whatsapp'></i></a>
+                                </td>
+                            </tr>
+                            ";
+                        }
+                        $num++;
+                    }
                     
-                </div>
-                <a href="https://wa.me/<número>?text=<mensagem>" class="link-whats"><i class="bi bi-whatsapp"></i></a>
-            </div>
-
-            <div class="container-card">
-                <div class="card-agnd">
-                    <h3>Nome da cliente</h3>
-                    <h4>procedimento</h4>
-                    <div class="horario">
-                        <p>dd/mm/yyyy</p>
-                        <span>00:00</span>
-                    </div>
-                    
-                </div>
-                <a href="https://wa.me/<número>?text=<mensagem>" class="link-whats"><i class="bi bi-whatsapp"></i></a>
-            </div>
-
-            
-        </section>
-
+                  
+                ?>
+            </tbody>
+        </table>
+        <footer>&copy;2024 Agenda Fácil</footer>
         <!--Botão que direciona para tela de cadastro-->
         <a href="cadastro" class="btn-cadastro" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Cadastro">
             <i class="bi bi-plus-lg"></i>
@@ -62,7 +100,7 @@
     </main>  
 
     
-    <script>
+<script>
   var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
   tooltipTriggerList.map(function (tooltipTriggerEl) {
     return new bootstrap.Tooltip(tooltipTriggerEl);
