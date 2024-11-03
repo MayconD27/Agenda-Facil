@@ -45,25 +45,6 @@ function intDots(val){
 
 //Interação do numero de telefone 
 
-const numTel = document.querySelector('#num-tel');
-
-numTel.addEventListener('change',()=>{
-    let tamNum = numTel.value.length;
-    if(tamNum===9){
-
-        
-            let priNum = numTel.value.slice(0,1)
-            let priPart = numTel.value.slice(1,5);
-            let segPart = numTel.value.slice(5);
-            let numComple = `${priNum} ${priPart}-${segPart}`
-            console.log(numComple);
-
-
-    
-        numTel.value = numComple;
-    }
-    
-});
 
 // Seleciona o elemento de inputs
 const dataCadastro = document.querySelector('#dataCadastro');

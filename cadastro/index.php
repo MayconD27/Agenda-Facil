@@ -11,7 +11,8 @@
     <title>Cadastro de Horario</title>
 </head>
 <body>
-    <form>
+    <a href="../" class="back"><i class="bi bi-arrow-left-short"></i></a>
+    <form action="inserirAgendamento.php" method="POST">
         <div class="container-etapas">
         <!--Etapa 1-->    
         <div class="etapa" id="etapa1">

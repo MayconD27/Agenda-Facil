@@ -11,83 +11,108 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
+    <?php
+        $data = isset($_POST['date']) ? $_POST['date'] : date('Y-m-d');
+                    
+    ?>
     <main class="container-main">
         <nav class="menu">
-            <div class="dia">
-                <div class="antes"><</div>
-                <button>Hoje</button>
-                <div class="depois">></div>
-            </div>
+            
+
+            <a href="index.php" class="btn-hj">Hoje</a>
+
             
             
-            <form action="">
+            <form action="index.php" method="POST">
             <div>
-                <input type="date">
+                <input type="date" name="date" required>
                 <button>Filtrar pela data</button>
             </div>
             </form>
         </nav>
+        <h5>
+            <?php
+                    $dateObject = DateTime::createFromFormat('Y-m-d', $data);
+                    $dataFormatada = $dateObject->format('d/m/Y');
+                    echo $dataFormatada;
+            ?>
+        </h5>
         <table>
             <thead>
                 <tr class="cabecalho">
                     <th>Horario</th>
                     <th>Cliente</th>
-                    <th>Contato</th>
+                    <th>Procedimento</th>
                     <th><i class="bi bi-gear"></i></th>
                 </tr>
 
             </thead>
             <tbody>
                 <?php
-                    include_once './bd.php';
-                    $num = 7;
+                    include_once 'bd.php';  
 
-                    while ($num <= 19) {
-                        
-                        if($num ==15){
-                            echo "
-                            <tr class='linhaCorpo'>
-                                <td class='lineHorario'>$num:00</td>
-                                <td  class='vago' colspan='3'>Horario Vago</td>
-                            </tr>
-                            ";         
-                        }
-                        if ($num == 8) {
-                            echo "
-                            <tr class='linhaCorpo'>
-                                <td class='lineHorario'>$num:00</td>
-                                <td rowspan='2'>Cliente $num</td>
-                                <td rowspan='2'>Telefone $num</td>
-                                <td rowspan='2'class='ferramentas'>
-                                    <a href='' class='trash' data-bs-toggle='tooltip' data-bs-placement='right' data-bs-title='Apagar'><i class='bi bi-trash'></i></a>
-                                    <a href='' class='contact' data-bs-toggle='tooltip' data-bs-placement='right' data-bs-title='Enviar mensagem'><i class='bi bi-whatsapp'></i></a>
-                                </td>
-                            </tr>
-                            ";
-                            // Linha seguinte com horário diferente
-                            $num++;
-                            echo "
-                            <tr class='linhaCorpo'>
-                                <td class='lineHorario'>$num:00</td>
-                            </tr>
-                            ";
-                        } else {
-                            echo "
-                            <tr class='linhaCorpo'>
-                                <td class='lineHorario'>$num:00</td>
-                                <td>Cliente $num</td>
-                                <td>Telefone $num</td>
-                                <td class='ferramentas'>
-                                    <a href='' class='trash' data-bs-toggle='tooltip' data-bs-placement='right' data-bs-title='Apagar'><i class='bi bi-trash'></i></a>
-                                    <a href='' class='contact' data-bs-toggle='tooltip' data-bs-placement='right' data-bs-title='Enviar mensagem'><i class='bi bi-whatsapp'></i></a>
-                                </td>
-                            </tr>
-                            ";
-                        }
-                        $num++;
-                    }
+                    $stmt = $bd->prepare("SELECT * FROM agendamento INNER JOIN cliente ON agendamento.id_cliente = cliente.id WHERE data = :data_agend");
+                    $stmt->execute([':data_agend' => $data]);
+                    $agendamentos = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     
-                  
+
+                    $horarios = ['07:00:00', '08:00:00', '09:00:00', '10:00:00', '11:00:00','12:00:00','13:00:00','14:00:00','15:00:00','16:00:00','17:00:00','18:00:00','19:00:00'];
+                    $qnt = 0;
+                    foreach ($horarios as $indece => $h) {
+                        $encontrado = false; // Rastreia se o horário foi encontrado
+
+                        foreach ($agendamentos as $agendamento) {
+                            
+                            $horario = $agendamento['horario']; 
+                            $nome = $agendamento['nome'];
+                            $telefone = $agendamento['telefone'];
+                            $quantidade = $agendamento['qnt_horario'];
+                            $procedimento = $agendamento['procedimento'];
+
+                            if ($horario==$h) {
+                                $qnt  = $quantidade;
+
+                                echo "
+                                    <tr class='linhaCorpo'>  
+                                        <td class='lineHorario'>$horario</td>
+                                        <td rowspan='$quantidade'>$nome</td>
+                                        <td rowspan='$quantidade'>$procedimento</td>
+                                        <td rowspan='$quantidade' class='ferramentas'>
+                                            <a href='' class='trash' data-bs-toggle='tooltip' data-bs-placement='right' data-bs-title='Remover agendamento'>
+                                                <i class='bi bi-trash'></i></a>
+                                            
+                                            <a target='_blank' href='https://api.whatsapp.com/send?phone=$telefone&text=Olá $nome estamos entrando em contato para confirmar seu agendamento que terá inicio as $h' class='contact' data-bs-toggle='tooltip' data-bs-placement='right' data-bs-title='Enviar mensagem'>
+                                                <i class='bi bi-whatsapp'></i>
+                                            </a>
+                                        </td>
+                                    </tr> 
+                                ";
+                                $encontrado = true;
+                                break; 
+                            }
+                        }
+
+
+                            if (!$encontrado) {
+                                if($qnt>1){
+                                    $qnt --;
+                                    echo "
+                                        <tr class='linhaCorpo'>
+                                            <td class='lineHorario'>$h </td>
+                                        </tr>
+                                    ";
+                                    continue;
+                                }else{
+                                    echo "
+                                    <tr class='linhaCorpo'>
+                                        <td class='lineHorario'>$h </td>
+                                        <td class='vago' colspan='3'>Horario Vago</td>
+                                    </tr>
+                                    ";
+                                }
+                                
+                            }
+                    }
                 ?>
             </tbody>
         </table>
