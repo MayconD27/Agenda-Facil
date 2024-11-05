@@ -36,6 +36,7 @@
         
         // Executar a consulta
         $stmtInsert->execute();
+        header('location: ../');
 
     }else{
         $stmtInsert = $bd->prepare("INSERT INTO cliente (nome, telefone) VALUES (:nomeCli, :tel)");
@@ -60,5 +61,6 @@
         $stmtInsertAgnd->bindParam(':id_cli', $idInserido);
 
         $stmtInsertAgnd->execute();
+        header('location: ../');
     }
 ?>
