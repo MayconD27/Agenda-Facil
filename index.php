@@ -12,6 +12,7 @@
 </head>
 <body>
     <?php
+        date_default_timezone_set('America/Sao_Paulo');
         $data = isset($_POST['date']) ? $_POST['date'] : date('Y-m-d');
                     
     ?>
@@ -62,7 +63,7 @@
                         $encontrado = false; // Rastreia se o horário foi encontrado
 
                         foreach ($agendamentos as $agendamento) {
-                            
+                            $id = $agendamento['id_agenda'];
                             $horario = $agendamento['horario']; 
                             $nome = $agendamento['nome'];
                             $telefone = $agendamento['telefone'];
@@ -78,10 +79,10 @@
                                         <td rowspan='$quantidade'>$nome</td>
                                         <td rowspan='$quantidade'>$procedimento</td>
                                         <td rowspan='$quantidade' class='ferramentas'>
-                                            <a href='' class='trash' data-bs-toggle='tooltip' data-bs-placement='right' data-bs-title='Remover agendamento'>
+                                            <a href='delete.php?id=$id' class='trash' data-bs-toggle='tooltip' data-bs-placement='right' data-bs-title='Remover agendamento'>
                                                 <i class='bi bi-trash'></i></a>
                                             
-                                            <a target='_blank' href='https://api.whatsapp.com/send?phone=$telefone&text=Olá $nome estamos entrando em contato para confirmar seu agendamento que terá inicio as $h' class='contact' data-bs-toggle='tooltip' data-bs-placement='right' data-bs-title='Enviar mensagem'>
+                                            <a target='_blank' href='https://api.whatsapp.com/send?phone=$telefone&text=Olá $nome, estamos entrando em contato para confirmar seu agendamento que terá inicio as $h' class='contact' data-bs-toggle='tooltip' data-bs-placement='right' data-bs-title='Enviar mensagem'>
                                                 <i class='bi bi-whatsapp'></i>
                                             </a>
                                         </td>
