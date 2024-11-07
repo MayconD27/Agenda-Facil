@@ -8,8 +8,35 @@ const etapa2 = document.querySelector('#etapa2');
 const etapa3 = document.querySelector('#etapa3');
 const etapaEnd = document.querySelector('#etapaEnd');
 
+//reset
+
+const reset = document.querySelector('#reset');
+
+
 let counter = 1;
 //Evento do botão next
+
+//Reseta
+reset.addEventListener('click',()=>{
+    counter =1;
+    
+
+    etapa1.style.display = 'flex';
+    //Apaga
+    etapa2.style.display = 'none';
+    etapa3.style.display = 'none';
+    etapaEnd.style.display = 'none';
+    //Retorna a barra
+    document.querySelector('#dots').style.display = 'flex';
+    btnNext.style.display='block';
+    
+    intDots(-150);
+    dot2.style.backgroundColor = 'var(--third-color)';
+    dot2.style.color = 'var(--primary-color)';
+    dot2.innerHTML = '2';
+})
+
+
 btnNext.addEventListener('click',()=>{
     counter ++;
     btnBack.style.display = 'block';
@@ -79,7 +106,7 @@ function StepEtapa(value){
         etapa2.style.display = 'none';
         etapa3.style.display = 'none';  
         document.querySelector('#dots').style.display = 'none';
-
+        
 
     }
     

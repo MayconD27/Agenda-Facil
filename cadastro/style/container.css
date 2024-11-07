@@ -108,3 +108,13 @@ button:hover{
 .back:hover{
     filter: brightness(.8);
 }
+.end{
+    flex-direction: column;
+    width: 100%;
+    margin: 10px auto;
+    align-items: center;
+    justify-content: center;
+}
+.end button{
+    width: 80%;
+}

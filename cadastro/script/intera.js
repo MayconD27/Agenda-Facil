@@ -11,6 +11,9 @@ const progress = document.querySelector('#progress');
 const dot1 = document.querySelector('#dot1');
 const dot2 = document.querySelector('#dot2');
 const dot3 = document.querySelector('#dot3');
+reset.addEventListener('click',()=>{
+    counter =1;
+})
 function intDots(val){
     if(valDot>=0){
         valDot += val;

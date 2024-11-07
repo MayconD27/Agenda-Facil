@@ -14,6 +14,15 @@
     <?php
         date_default_timezone_set('America/Sao_Paulo');
         $data = isset($_POST['date']) ? $_POST['date'] : date('Y-m-d');
+
+        include_once './bd.php';
+        session_start();
+        $usuarioLogado = isset($_SESSION['logado']) ?  $_SESSION['logado'] : false;
+
+        if($usuarioLogado== false){
+            header('location: ./Login');
+            exit;
+        }
                     
     ?>
     <main class="container-main">
@@ -122,6 +131,7 @@
         <a href="cadastro" class="btn-cadastro" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Cadastro">
             <i class="bi bi-plus-lg"></i>
         </a>
+        <a href="logout.php">sair</a>
 
     </main>  
 

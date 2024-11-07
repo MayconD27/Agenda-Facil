@@ -13,7 +13,7 @@
 
     <div class="container" id="container">
         <div class="form-container sign-up">
-            <form>
+                <form>
                 <h1>Agenda Facil</h1>
                 <p class="desc">Veja sobre as vantagens do nosso appp</p>
                 <ul class="listaApp">
@@ -25,13 +25,13 @@
             </form>
         </div>
         <div class="form-container sign-in">
-            <form>
+            <form action="logar.php" method="POST">
                 <h1>Login</h1>
 
                 <p class="desc">Use seus dados ja cadastrados.</p>
-                <input type="email" placeholder="Email">
-                <input type="password" placeholder="Senha">
-                <button>Entrar</button>
+                <input type="email" placeholder="Email" name='email'>
+                <input type="password" placeholder="Senha" name='senha'>
+                <button type='submit'>Entrar</button>
             </form>
         </div>
         <div class="toggle-container">
