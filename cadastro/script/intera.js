@@ -1,7 +1,33 @@
-document.querySelector('#nome').addEventListener('change', (e)=>{
-    const valor = e.target.value;
-    document.querySelector('#valNome').innerHTML = valor;
-})
+
+const agendamento = [{
+'nome':'',
+'ddd':'',
+'telefone':'',
+'procedimento':'',
+'data':'',
+'horario':'',
+'quantidade': ''
+}];
+
+document.querySelector('#nome').addEventListener('change', (e)=>{MontaObj('nome',e.target.value)});
+
+document.querySelector('#ddd').addEventListener('change', (e)=>{MontaObj('ddd',e.target.value)});
+
+document.querySelector('#num').addEventListener('change', (e)=>{MontaObj('telefone',e.target.value)});
+
+document.querySelector('#proc').addEventListener('change', (e)=>{MontaObj('procedimento',e.target.value)});
+
+document.querySelector('#dataCadastro').addEventListener('change', (e)=>{MontaObj('data',e.target.value)});
+
+document.querySelector('#horariosDisponiveis').addEventListener('change', (e)=>{MontaObj('horario',e.target.value)});
+
+
+document.querySelector('#quantidadeHorarios').addEventListener('change', (e)=>{MontaObj('quantidade',e.target.value)});
+
+function MontaObj (tipo,item){
+    agendamento[0][tipo] = item;
+    document.querySelector(`#info-${tipo}`).innerHTML = agendamento[0][tipo];
+}
 
 //Interações das dots
 let valDot = 0;
