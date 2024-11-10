@@ -15,13 +15,33 @@
     $qntAgend = $_POST['qntHorario'];
 
     include_once '../bd.php';
+
+        
+        $stmtInsertAgnd = $bd->prepare("INSERT INTO agendamento (procedimento, data, horario, qnt_horario, nome_cliente, telefone) VALUES (:procedimento, :data_agend, :horario, :qnt_h, :nomeCli, :tel)");
+
+        // Colocar o Parâmetro
+        $stmtInsertAgnd->bindParam(':procedimento', $procedimento);
+        $stmtInsertAgnd->bindParam(':data_agend', $data);
+        $stmtInsertAgnd->bindParam(':horario', $horario);
+        $stmtInsertAgnd->bindParam(':qnt_h', $qntAgend);
+        $stmtInsertAgnd->bindParam(':tel', $telCompleto);
+        $stmtInsertAgnd->bindParam(':nomeCli', $nome);
+
+        $stmtInsertAgnd->execute();
+
+        //header('location: ../');
+
+
+/*
+    Caso for continuar o projeto usar esse código para reconhecer telefone do cliente
     $stmt = $bd->prepare("SELECT id FROM cliente Where telefone = :tel");
     $stmt->execute([':tel'=> $telCompleto]);
     //Gera a pesquisa
     $agendamentos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
-    if($agendamentos){
+
+        if($agendamentos){
         $idCli = $agendamentos[0]['id'];
         $stmtInsert = $bd->prepare("INSERT INTO agendamento (procedimento, data, horario, qnt_horario, id_cliente) VALUES (:procedimento, :data_agend, :horario, :qnt_h, :id_cli)");
 
@@ -38,29 +58,8 @@
         $stmtInsert->execute();
         header('location: ../');
 
-    }else{
-        $stmtInsert = $bd->prepare("INSERT INTO cliente (nome, telefone) VALUES (:nomeCli, :tel)");
-
-        // Colocar o Parâmetro
-        $stmtInsert->bindParam(':tel', $telCompleto);
-        $stmtInsert->bindParam(':nomeCli', $nome);
-        
-        // Executa
-        $stmtInsert->execute();
-        
-        // Obtém o ID do último registro inserido
-        $idInserido = $bd->lastInsertId();
-
-        $stmtInsertAgnd = $bd->prepare("INSERT INTO agendamento (procedimento, data, horario, qnt_horario, id_cliente) VALUES (:procedimento, :data_agend, :horario, :qnt_h, :id_cli)");
-
-        // Colocar o Parâmetro
-        $stmtInsertAgnd->bindParam(':procedimento', $procedimento);
-        $stmtInsertAgnd->bindParam(':data_agend', $data);
-        $stmtInsertAgnd->bindParam(':horario', $horario);
-        $stmtInsertAgnd->bindParam(':qnt_h', $qntAgend);
-        $stmtInsertAgnd->bindParam(':id_cli', $idInserido);
-
-        $stmtInsertAgnd->execute();
-        header('location: ../');
     }
+*/
+
+
 ?>

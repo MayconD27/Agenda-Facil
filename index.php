@@ -61,7 +61,7 @@
                 <?php
                     include_once 'bd.php';  
 
-                    $stmt = $bd->prepare("SELECT * FROM agendamento INNER JOIN cliente ON agendamento.id_cliente = cliente.id WHERE data = :data_agend");
+                    $stmt = $bd->prepare("SELECT * FROM agendamento WHERE data = :data_agend");
                     $stmt->execute([':data_agend' => $data]);
                     $agendamentos = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     
@@ -74,7 +74,7 @@
                         foreach ($agendamentos as $agendamento) {
                             $id = $agendamento['id_agenda'];
                             $horario = $agendamento['horario']; 
-                            $nome = $agendamento['nome'];
+                            $nome = $agendamento['nome_cliente'];
                             $telefone = $agendamento['telefone'];
                             $quantidade = $agendamento['qnt_horario'];
                             $procedimento = $agendamento['procedimento'];
