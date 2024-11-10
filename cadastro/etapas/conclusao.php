@@ -1,4 +1,4 @@
-<h2>conclusao</h2>
+<h2>Horário Agendado</h2>
 <div class="info" id="info">
     <p id="info-nome"></p>
     <p id="info-procedimento"></p>
