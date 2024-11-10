@@ -26,7 +26,7 @@
         <div class="form-container sign-up">
                 <form>
                 <h1>Agenda Facil</h1>
-                <p class="desc">Veja sobre as vantagens do nosso appp</p>
+                <p class="desc">Veja sobre as vantagens do nosso app</p>
                 <ul class="listaApp">
                     <li>Feito para facilitar sua vida</li>
                     <li>Mais praticidade</li>

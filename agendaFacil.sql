@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Tempo de geração: 13/10/2024 às 21:42
+-- Tempo de geração: 10/11/2024 às 19:04
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -28,23 +28,12 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `agendamento` (
-  `id_agenda` int(10) UNSIGNED NOT NULL,
+  `id_agenda` int(11) NOT NULL,
   `procedimento` varchar(100) NOT NULL,
   `data` date NOT NULL,
   `horario` varchar(10) NOT NULL,
   `qnt_horario` int(11) NOT NULL,
-  `id_cliente` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
-
--- --------------------------------------------------------
-
---
--- Estrutura para tabela `cliente`
---
-
-CREATE TABLE `cliente` (
-  `id` int(11) NOT NULL,
-  `nome` varchar(50) NOT NULL,
+  `nome_cliente` varchar(50) NOT NULL,
   `telefone` varchar(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
@@ -63,6 +52,13 @@ CREATE TABLE `usuario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
+-- Despejando dados para a tabela `usuario`
+--
+
+INSERT INTO `usuario` (`id_user`, `nome`, `email`, `senha`, `adm`) VALUES
+(1, 'Administrador', 'admin@fapam', '1', '1');
+
+--
 -- Índices para tabelas despejadas
 --
 
@@ -70,14 +66,7 @@ CREATE TABLE `usuario` (
 -- Índices de tabela `agendamento`
 --
 ALTER TABLE `agendamento`
-  ADD PRIMARY KEY (`id_agenda`),
-  ADD KEY `agenda-cli` (`id_cliente`);
-
---
--- Índices de tabela `cliente`
---
-ALTER TABLE `cliente`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id_agenda`);
 
 --
 -- Índices de tabela `usuario`
@@ -93,29 +82,13 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de tabela `agendamento`
 --
 ALTER TABLE `agendamento`
-  MODIFY `id_agenda` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de tabela `cliente`
---
-ALTER TABLE `cliente`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_agenda` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de tabela `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- Restrições para tabelas despejadas
---
-
---
--- Restrições para tabelas `agendamento`
---
-ALTER TABLE `agendamento`
-  ADD CONSTRAINT `agenda-cli` FOREIGN KEY (`id_cliente`) REFERENCES `cliente` (`id`);
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

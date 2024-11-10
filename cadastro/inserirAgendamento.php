@@ -29,7 +29,7 @@
 
         $stmtInsertAgnd->execute();
 
-        //header('location: ../');
+        header('location: ../');
 
 
 /*

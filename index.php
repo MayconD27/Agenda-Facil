@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tela inicial</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> 
     <link rel="stylesheet" href="main-style/index.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href=" 	https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
@@ -53,7 +54,7 @@
                     <th>Horario</th>
                     <th>Cliente</th>
                     <th>Procedimento</th>
-                    <th><i class="bi bi-gear"></i></th>
+                    <th ><i class="bi bi-gear"></i></th>
                 </tr>
 
             </thead>
@@ -88,7 +89,7 @@
                                         <td rowspan='$quantidade'>$nome</td>
                                         <td rowspan='$quantidade'>$procedimento</td>
                                         <td rowspan='$quantidade' class='ferramentas'>
-                                            <a href='delete.php?id=$id' class='trash' data-bs-toggle='tooltip' data-bs-placement='right' data-bs-title='Remover agendamento'>
+                                            <a onclick='Deletar($id)' class='trash' data-bs-toggle='tooltip' data-bs-placement='right' data-bs-title='Remover agendamento'>
                                                 <i class='bi bi-trash'></i></a>
                                             
                                             <a target='_blank' href='https://api.whatsapp.com/send?phone=$telefone&text=Olá $nome, estamos entrando em contato para confirmar seu agendamento que terá inicio as $h' class='contact' data-bs-toggle='tooltip' data-bs-placement='right' data-bs-title='Enviar mensagem'>
@@ -128,19 +129,44 @@
         </table>
         <footer>&copy;2024 Agenda Fácil</footer>
         <!--Botão que direciona para tela de cadastro-->
-        <a href="cadastro" class="btn-cadastro" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Cadastro">
+        <a href="cadastro" class="btn-cadastro" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Cadastrar agendamento">
             <i class="bi bi-plus-lg"></i>
         </a>
-        <a href="logout.php">sair</a>
-
+        <a href="logout.php" id="btnSair" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Sair da Página">
+            <i class="bi bi-box-arrow-left"></i> 
+        </a>
+    
     </main>  
 
-    
+
 <script>
   var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
   tooltipTriggerList.map(function (tooltipTriggerEl) {
     return new bootstrap.Tooltip(tooltipTriggerEl);
   });
+
+
+function Deletar(id){
+    Swal.fire({
+        title: "Tem certeza que deseja remover o agendamento?",
+        showDenyButton: true,
+        confirmButtonText: "Remover",
+        denyButtonText: `Cancelar`,
+        customClass: {
+        confirmButton: 'swal2-confirma',  
+        denyButton: 'swal2-cancel'   
+    },
+    }).then((result) => {
+    /* Read more about isConfirmed, isDenied below */
+    if (result.isConfirmed) {
+        Swal.fire("Agendamento apagado", "", "success");
+        window.location.href = `delete.php?id=${id}`;
+    } else if (result.isDenied) {
+        Swal.fire("Remoção cancelada", "", "info");
+    }
+    });
+}
+  
 </script>
  
 
