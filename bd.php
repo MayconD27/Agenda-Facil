@@ -1,9 +1,9 @@
 <?php
 
 
-define('DB_SERVER', 'localhost');
+define('DB_SERVER', '177.185.252.253:18889');
 define('DB_USERNAME', 'root');
-define('DB_PASSWORD', '');
+define('DB_PASSWORD', 'SenhaForte1');
 define('DB_NAME', 'agendaFacil');
 
 
