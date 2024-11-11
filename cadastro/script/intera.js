@@ -17,8 +17,18 @@ document.querySelector('#num').addEventListener('change', (e)=>{MontaObj('telefo
 
 document.querySelector('#proc').addEventListener('change', (e)=>{MontaObj('procedimento',e.target.value)});
 
-document.querySelector('#dataCadastro').addEventListener('change', (e)=>{MontaObj('data',e.target.value)});
-
+document.querySelector('#dataCadastro').addEventListener('change', (e) => {
+   
+    const data = e.target.value;
+    
+    
+    const dataObj = new Date(data);
+    
+    const dataFormatada = dataObj.toLocaleDateString('pt-BR');
+    
+    // Chamar a função MontaObj com a data formatada
+    MontaObj('data', dataFormatada);
+});
 document.querySelector('#horariosDisponiveis').addEventListener('change', (e)=>{MontaObj('horario',e.target.value)});
 
 
