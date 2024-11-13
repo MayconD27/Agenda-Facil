@@ -160,17 +160,41 @@ h2{
     justify-content: center;
     align-items: center;
 }
-.container-tel{
-    display: flex;
-    align-items: center;
-}
+
 .telefone{
     display: flex;
-    align-items: center;
+    align-items: start;
 }
 
 #info span{
     font-size: 18px;
     font-weight: 600;
     color: var(--primary-color);
+    display: flex;
+    min-width: 240px;
+
+    justify-content: start;
+
+}
+
+#info>div{
+    display: flex;
+    justify-content: start;
+    gap: 5px;
+    width: 400px;
+    align-items: center;
+    padding: 5px;
+    border-top:1px solid var(--third-color)
+}
+#info>div:first-child{
+    border: none;
+}
+#info div > p{
+    display: flex;
+    justify-content: start;
+    margin: 0;
+}
+.telefone p{
+    padding: 0;
+    width: max-content;
 }

@@ -36,7 +36,7 @@ document.querySelector('#quantidadeHorarios').addEventListener('change', (e)=>{M
 
 function MontaObj (tipo,item){
     agendamento[0][tipo] = item;
-    document.querySelector(`#info-${tipo}`).innerHTML += agendamento[0][tipo];
+    document.querySelector(`#info-${tipo}`).innerHTML = agendamento[0][tipo];
 }
 
 //Interações das dots

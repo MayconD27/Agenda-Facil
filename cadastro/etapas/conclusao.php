@@ -1,21 +1,23 @@
 <h2>Horário Agendado</h2>
 <div class="info" id="info">
+    <div><span>Nome: </span><p id="info-nome"></p></div>
+    <div><span>Procedimento: </span><p id="info-procedimento"></p></div>
+    
 
-    <p id="info-nome"><span>Nome: </span></p>
-    <p id="info-procedimento"><span>Procedimento: </span></p>
-
-    <div class='container-tel'>
-        <span><pre>Telefone: </pre></span>
-        <p class='telefone'>
+    <div>
+        <span>Telefone:</span>
+        <div class='telefone'>
             <p id="info-ddd"></p>
             <p id="info-telefone"></p>
-        </p>
+        </div>
         
     </div>
-   
-    <p id="info-data"><span>Data: </span></p>
-    <p id="info-horario"><span>Horario: </span></p>
-<p id="info-quantidade"><span>Quantidade de horarios: </span> </p>
+
+   <div><span>Data: </span><p id="info-data"></p></div>
+   <div><span>Horario: </span><p id="info-horario"></p></div>
+   <div><span>Quantidade de horarios: </span> <p id="info-quantidade"></p></div>
+    
+
 </div>
 
 <div class="btns end">
