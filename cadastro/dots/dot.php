@@ -1,4 +1,3 @@
-
     <div class="container-main" id="dots">
         <div class="container-line">
             <div class="line">

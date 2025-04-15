@@ -10,76 +10,45 @@
 .menu{
     display: flex; 
     width: 100%;
-    align-items: center;
     flex-wrap: wrap;
-    justify-content: center;
-    margin-bottom: 10px;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    position: sticky;
+    top: 0;
+    background-color: #fff;
+    padding-bottom: 5px;
+    box-shadow: 0 10px 10px #fff;
  }
-.menu button,.btn-hj{
-    width: 100%;
-    height: 30px;
-    cursor: pointer;
-    background-color: var(--second-color);
-    border: none;
-    border-radius: 5px;
-    color: var(--bkg-color);
-    text-decoration: none;
-    text-align: center;
+.menu .btn{
+    color: var(--primary-color);
+    background-color: #fff;
+    font-size: 25px;
 }
-.menu>form{
-    width: 100%;
-    margin-top: 10px;
+.filter{
+    font-size: 20px;
 }
-.menu>form>div{
-    padding: 5px;
-    border-radius: 5px;
-    border: 1px solid #ddd;
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2px;
-}
-.menu>form input{
-    width: 100%;
-    background-color: var(--bkg-color);
-    border: none;
-    border-radius: 5px;
-}
-
 .btn-cadastro{
-    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 50px;
+    width: 100%;
     height: 50px;
-    background-color: var(--primary-color);
+    background-color: var(--second-color);
     color: var(--bkg-color);
     font-weight: bolder;
     font-size: 20px;
-    position: fixed;
-    right: 5%;
-    bottom: 5%;
+    border-radius: 10px;
+    text-decoration: none;
+    gap: 10px;
+}
+.btn-cadastro h5{
+    color: var(--bkg-color);
+    margin: 0;
+    padding: 0;
+    font-weight: 600;
 }
 
-#btnSair{
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 50px;
-    height: 50px;
-    background-color: var(--primary-color);
-    color: var(--bkg-color);
-    font-weight: bolder;
-    font-size: 20px;
-    position: fixed;
-    left: 5%;
-    bottom: 5%;
-    
-}
 .btn-cadastro:hover,#btnSair:hover{
-    scale: 1.1;
     transition: .5s;
     filter: brightness(.8);
 }
@@ -158,7 +127,6 @@ footer{
 }
 h5{
     text-align: center;
-    width: 100%;
     padding: 10px 0;
     font-size: 16px;
     color: var(--second-color);

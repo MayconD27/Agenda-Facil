@@ -183,7 +183,7 @@ h2{
     gap: 5px;
     width: 400px;
     align-items: center;
-    padding: 5px;
+    padding: 5ipx;
     border-top:1px solid var(--third-color)
 }
 #info>div:first-child{

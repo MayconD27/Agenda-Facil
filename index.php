@@ -26,28 +26,38 @@
         }
                     
     ?>
+    
     <main class="container-main">
-        <nav class="menu">
-            
-
-            <a href="index.php" class="btn-hj">Hoje</a>
-
-            
-            
-            <form action="index.php" method="POST">
-            <div>
-                <input type="date" name="date" required>
-                <button>Filtrar pela data</button>
-            </div>
-            </form>
-        </nav>
-        <h5>
-            <?php
+        <div class="menu">
+            <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop" aria-controls="staticBackdrop">
+                <i class="bi bi-list"></i>
+            </button>
+            <h5>
+                <?php
                     $dateObject = DateTime::createFromFormat('Y-m-d', $data);
                     $dataFormatada = $dateObject->format('d/m/Y');
                     echo $dataFormatada;
-            ?>
-        </h5>
+                ?>
+            </h5>
+            <button class="btn filter">
+                <i class="bi bi-funnel-fill"></i>
+            </button>
+            <a href="cadastro" class="btn-cadastro" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Cadastrar agendamento">
+               <h5>Cadastrar</h5> <i class="bi bi-plus-lg"></i>
+            </a> 
+        </div>
+        
+    <div class="offcanvas offcanvas-start" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop" aria-labelledby="staticBackdropLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="staticBackdropLabel">Agenda Fácil</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <a href="logout.php" data-bs-toggle="tooltip" data-bs-placement="~right" data-bs-title="Sair da Página">
+               Sair do sistema
+            </a>
+        </div>
+    </div>
         <table>
             <thead>
                 <tr class="cabecalho">
@@ -128,14 +138,7 @@
             </tbody>
         </table>
         <footer>&copy;2024 Agenda Fácil</footer>
-        <!--Botão que direciona para tela de cadastro-->
-        <a href="cadastro" class="btn-cadastro" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Cadastrar agendamento">
-            <i class="bi bi-plus-lg"></i>
-        </a>
-        <a href="logout.php" id="btnSair" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Sair da Página">
-            <i class="bi bi-box-arrow-left"></i> 
-        </a>
-    
+        <!--Botão que direciona para tela de cadastro--> 
     </main>  
 
 
