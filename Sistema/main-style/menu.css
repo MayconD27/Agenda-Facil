@@ -1,0 +1,12 @@
+.offcanvas-body{
+    display: flex;
+    flex-direction: column;
+}
+
+.offcanvas-body a{
+    font-size: 18px;
+    font-weight: 500;
+    margin: 5px 0;
+    color: var(--second-color);
+    text-decoration: none;
+}

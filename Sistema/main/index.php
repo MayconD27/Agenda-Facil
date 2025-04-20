@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tela inicial</title>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> 
-    <link rel="stylesheet" href="main-style/index.css">
+    <link rel="stylesheet" href="../main-style/index.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href=" 	https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="main-style/inicio.css">
+    <link rel="stylesheet" href="../main-style/inicio.css">
+    <link rel="stylesheet" href="../main-style/menu.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
@@ -16,48 +17,32 @@
         date_default_timezone_set('America/Sao_Paulo');
         $data = isset($_POST['date']) ? $_POST['date'] : date('Y-m-d');
 
-        include_once './bd.php';
+        include_once '../bd.php';
         session_start();
         $usuarioLogado = isset($_SESSION['logado']) ?  $_SESSION['logado'] : false;
 
         if($usuarioLogado== false){
-            header('location: ./Login');
+            header('location: ../Login');
             exit;
         }
-                    
+    //Tools
+    include_once "../tools/menu.php";              
     ?>
     
     <main class="container-main">
-        <div class="menu">
-            <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop" aria-controls="staticBackdrop">
-                <i class="bi bi-list"></i>
-            </button>
-            <h5>
-                <?php
-                    $dateObject = DateTime::createFromFormat('Y-m-d', $data);
-                    $dataFormatada = $dateObject->format('d/m/Y');
-                    echo $dataFormatada;
-                ?>
-            </h5>
-            <button class="btn filter">
-                <i class="bi bi-funnel-fill"></i>
-            </button>
-            <a href="cadastro" class="btn-cadastro" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Cadastrar agendamento">
-               <h5>Cadastrar</h5> <i class="bi bi-plus-lg"></i>
-            </a> 
-        </div>
-        
-    <div class="offcanvas offcanvas-start" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop" aria-labelledby="staticBackdropLabel">
-        <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="staticBackdropLabel">Agenda Fácil</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body">
-            <a href="logout.php" data-bs-toggle="tooltip" data-bs-placement="~right" data-bs-title="Sair da Página">
-               Sair do sistema
-            </a>
-        </div>
-    </div>
+        <button class="btn filter" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Filtrar">
+            <i class="bi bi-funnel-fill"></i>
+        </button>
+        <a href="../cadastro" class="btn-cadastro" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Cadastrar agendamento">
+            <h5>Cadastrar</h5> <i class="bi bi-plus-lg"></i>
+        </a>
+        <h5 class="timer">
+            <?php
+                $dateObject = DateTime::createFromFormat('Y-m-d', $data);
+                $dataFormatada = $dateObject->format('d/m/Y');
+                echo $dataFormatada;
+            ?>
+        </h5> 
         <table>
             <thead>
                 <tr class="cabecalho">

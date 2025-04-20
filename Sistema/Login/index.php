@@ -4,7 +4,7 @@
  $usuarioLogado = isset($_SESSION['logado']) ?  $_SESSION['logado'] : false;
 
  if($usuarioLogado== true){
-     header('location: ../');
+     header('location: ../main');
      exit;
  }
 ?>

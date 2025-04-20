@@ -26,6 +26,10 @@
 }
 .filter{
     font-size: 20px;
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    color: var(--second-color);
 }
 .btn-cadastro{
     display: flex;
@@ -140,4 +144,14 @@ h5{
 }
 .swal2-cancel{
     background-color: var(--second-color);
+}
+.timer{
+    width: 100%;
+}
+.nowap{
+    flex-wrap: nowrap;
+    flex-direction: column;
+}
+.text-menu{
+    display: flex;
 }
