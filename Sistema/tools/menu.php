@@ -11,17 +11,22 @@
     </div>
 
     <div class="offcanvas-body">
-        <a href="../main">
-            <i class="bi bi-house"></i>
-            <span>Inicio</span>
-        </a>
-        <a href="../cadastroUser">
-            <i class="bi bi-person-add"></i>
-            <span>Cadastro de usuários</span>
-        </a>
-        <a href="../logout.php">
-            <i class="bi bi-box-arrow-left"></i>
-            <span>Sair do sistema</span>
-        </a>
+        <nav class="itens-menu">
+            <a href="../main">
+                <i class="bi bi-house"></i>
+                <span>Inicio</span>
+            </a>
+            <a href="../cadastroUser">
+                <i class="bi bi-person-add"></i>
+                <span>Cadastro de usuários</span>
+            </a>
+        </nav>
+        <div class="comands">
+            <a href="">Nome do usuário</a>
+            <a href="../logout.php">
+                <i class="bi bi-box-arrow-left"></i>
+                <span>Sair</span>
+            </a>
+        </div>
     </div>
 </div>

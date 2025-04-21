@@ -1,12 +1,50 @@
+.menu{
+    display: flex; 
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    position: sticky;
+    top: 0;
+    background-color: #fff;
+    padding-bottom: 5px;
+    box-shadow: 0 10px 10px #fff;
+ }
+.menu .btn{
+    color: var(--primary-color);
+    background-color: #fff;
+    font-size: 25px;
+}
 .offcanvas-body{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.itens-menu{
+    display: flex;
+    flex-direction: column;
+}
+.itens-menu a{
+    margin: 5px 0;
+}
+#staticBackdropLabel{
+    border-bottom: 2px solid var(--second-color);
+    font-weight: 700;
+    font-size: 20px;
+    color: var(--second-color);
+}
+.offcanvas-body a{
+    font-size: 18px;
+    font-weight: 500;
+    text-decoration: none;
+    color: var(--second-color);
+}
+
+.offcanvas-body .comands{
     display: flex;
     flex-direction: column;
 }
 
-.offcanvas-body a{
-    font-size: 18px;
-    font-weight: 500;
-    margin: 5px 0;
-    color: var(--second-color);
-    text-decoration: none;
+.comands a{
+    margin: 10px 0;
 }
