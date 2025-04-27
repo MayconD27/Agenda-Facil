@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro de usuários</title>
+    <title>Cadastrar usuario</title>
     <link rel="stylesheet" href="../main-style/index.css">
     <link rel="stylesheet" href="../main-style/menu.css">
     <link rel="stylesheet" href="./style/cadUser.css">
@@ -17,21 +17,5 @@
         //tools
         include_once "../tools/menu.php";
     ?>
-
-<main class="cad-container">
-    <div class="btn-container">
-        <a href="cadastrar.php">Cadastrar usuário</a>
-    </div>
-    <div class="users-container">
-        <a href="usuario.php" class="user-item">
-            <h5>Nome do usuário</h5>
-            <div class="info-ativo">
-                <div class="dot noactive"></div>
-                <p class="info-text">Ativo</p>
-            </div>
-        </a>
-    </div>
-</main>
-    
 </body>
 </html>
