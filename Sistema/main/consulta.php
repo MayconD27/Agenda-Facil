@@ -1,5 +1,5 @@
 <?php
-include 'bd.php'; // Inclui a conexão
+include '../bd.php'; // Inclui a conexão
 
 header('Content-Type: application/json');
 

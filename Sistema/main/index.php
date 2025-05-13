@@ -55,7 +55,7 @@
             </thead>
             <tbody>
                 <?php
-                    include_once 'bd.php';  
+                    include_once '../bd.php';  
 
                     $stmt = $bd->prepare("SELECT * FROM agendamento WHERE data = :data_agend");
                     $stmt->execute([':data_agend' => $data]);

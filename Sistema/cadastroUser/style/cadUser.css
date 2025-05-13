@@ -65,3 +65,20 @@
 .noactive{
     background-color: red;
 }
+label{
+    color: #979797cb;
+    font-weight: 600;
+}
+.btn-primary{
+    background-color: var(--second-color) !important;
+    border: none;
+}
+form{
+    margin: 0 auto;
+    width: 90%;
+}
+form .btn{
+    border: none;
+    margin: 5px auto;
+    display: block;
+}

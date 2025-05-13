@@ -98,7 +98,7 @@ dataCadastro.addEventListener('change', () => {
     if (!valData) return;
 
     // Faz uma requisição ao servidor para obter os horários disponíveis nessa data
-    fetch(`../consulta.php?data=${valData}`)
+    fetch(`../main/consulta.php?data=${valData}`)
         .then(response => {
             // Verifica se a resposta da requisição está ok
             if (!response.ok) throw new Error('Network response was not ok');
@@ -136,7 +136,7 @@ horariosDisponiveisSelect.addEventListener('change', () => {
 
     if (!horarioSelecionado || !valData) return;
 
-    fetch(`../consulta_qnt_horario.php?data=${valData}&horario=${horarioSelecionado}`)
+    fetch(`../main/consulta_qnt_horario.php?data=${valData}&horario=${horarioSelecionado}`)
         .then(response => {
             if (!response.ok) throw new Error('Network response was not ok');
             return response.json();

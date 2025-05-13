@@ -5,6 +5,11 @@
     $email = ($_POST['email']) ?  $_POST['email'] : '';
     $senha = ($_POST['senha']) ?  $_POST['senha'] : '';
 
+    $hash = "";
+    if(!empty($senha)){
+        $hash = hash('sha256', $senha);
+    }
+
     // SQL com prepared statement
     $sql = "SELECT * FROM usuario WHERE email = :email AND senha = :senha";
 
@@ -13,7 +18,7 @@
 
     // Faz o bind dos parâmetros
     $resultado->bindParam(':email', $email);
-    $resultado->bindParam(':senha', $senha);
+    $resultado->bindParam(':senha', $hash);
 
     // Executa a consulta
     $resultado->execute();

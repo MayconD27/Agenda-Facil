@@ -17,5 +17,11 @@
         //tools
         include_once "../tools/menu.php";
     ?>
+    <div>
+            <div class="col-12 d-flex form-check form-switch justify-content-end" style="gap:10px;">
+                <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
+                <label class="form-check-label">Ativo</label>
+            </div>
+    </div>
 </body>
 </html>

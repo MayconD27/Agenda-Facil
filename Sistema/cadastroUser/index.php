@@ -1,3 +1,13 @@
+<?php
+    include_once '../bd.php';
+    session_start();
+    $usuarioLogado = isset($_SESSION['logado']) ?  $_SESSION['logado'] : false;
+
+    if($usuarioLogado== false){
+        header('location: ../Login');
+        exit;
+    }
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -26,12 +36,11 @@
         <a href="usuario.php" class="user-item">
             <h5>Nome do usuário</h5>
             <div class="info-ativo">
-                <div class="dot noactive"></div>
+                <div class="dot active"></div>
                 <p class="info-text">Ativo</p>
             </div>
         </a>
     </div>
 </main>
-    
 </body>
 </html>

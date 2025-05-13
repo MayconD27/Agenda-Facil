@@ -1,5 +1,5 @@
 <?php
- include_once './bd.php';
+ include_once '../bd.php';
  session_start();
  $usuarioLogado = isset($_SESSION['logado']) ?  $_SESSION['logado'] : false;
 

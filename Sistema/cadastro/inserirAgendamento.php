@@ -31,35 +31,4 @@
 
         header('location: ../');
 
-
-/*
-    Caso for continuar o projeto usar esse código para reconhecer telefone do cliente
-    $stmt = $bd->prepare("SELECT id FROM cliente Where telefone = :tel");
-    $stmt->execute([':tel'=> $telCompleto]);
-    //Gera a pesquisa
-    $agendamentos = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-
-
-        if($agendamentos){
-        $idCli = $agendamentos[0]['id'];
-        $stmtInsert = $bd->prepare("INSERT INTO agendamento (procedimento, data, horario, qnt_horario, id_cliente) VALUES (:procedimento, :data_agend, :horario, :qnt_h, :id_cli)");
-
-        // Colocar o Parâmetro
-        $stmtInsert->bindParam(':procedimento', $procedimento);
-        $stmtInsert->bindParam(':data_agend', $data);
-        $stmtInsert->bindParam(':horario', $horario);
-        $stmtInsert->bindParam(':qnt_h', $qntAgend);
-        $stmtInsert->bindParam(':id_cli', $idCli);
-        
-
-        
-        // Executar a consulta
-        $stmtInsert->execute();
-        header('location: ../');
-
-    }
-*/
-
-
 ?>

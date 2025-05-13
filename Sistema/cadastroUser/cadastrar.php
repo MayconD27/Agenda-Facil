@@ -1,3 +1,13 @@
+<?php
+    include_once '../bd.php';
+    session_start();
+    $usuarioLogado = isset($_SESSION['logado']) ?  $_SESSION['logado'] : false;
+
+    if($usuarioLogado== false){
+        header('location: ../Login');
+        exit;
+    }
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -17,5 +27,31 @@
         //tools
         include_once "../tools/menu.php";
     ?>
+    <form action="./cad-user.php" method="post">
+        <h2 class="full-width text-center">Cadastro de cliente</h2>
+        <div class="form-group p-5 row">
+            <div class="col-12 mb-2">
+                <label>Nome do usuário</label>
+                <input class="form-control" name="nome" type="text" placeholder="Nome do usuário">
+            </div>
+            <div class="col-12 col-md-6 mb-2">
+                <label>E-mail:</label>
+                <input class="form-control" name="email" type="email" placeholder="Email de acesso">
+            </div>
+            <div class="col-12 col-md-6 mb-2">
+                <label>Senha: </label>  
+                <input class="form-control" name="senha" type="password" placeholder="Senha">        
+            </div>
+            <div class="col-12 mb-2">
+                <label>Tipo de usuário</label>
+                <select name="tipo" class="form-control">
+                    <option value="">Selecione</option>
+                    <option value="0">Usuário normal</option>
+                    <option value="1">Admin</option>
+                </select>
+            </div>
+        </div>
+        <button class="btn btn-primary col-12">Cadastrar</button>
+    </form>
 </body>
 </html>
