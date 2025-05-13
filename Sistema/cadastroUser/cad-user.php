@@ -19,7 +19,7 @@
     }
 
             
-    $stmtInsertAgnd = $bd->prepare("INSERT INTO usuario (nome, email, senha,adm) VALUES (:nome, :email, :senha, :adm)");
+    $stmtInsertAgnd = $bd->prepare("INSERT INTO usuario (nome, email, senha,adm,ativo) VALUES (:nome, :email, :senha, :adm, 1)");
 
     // Colocar o Parâmetro
     $stmtInsertAgnd->bindParam(':nome', $nome_user);
