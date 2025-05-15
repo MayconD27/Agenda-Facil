@@ -45,7 +45,7 @@ button:hover{
     font-weight: 600;
     color: #494949;
 }
-.etapa input{
+.etapa input,.etapa select {
     width: 90%;
     border: none;
     background-color: #dfdfdf;

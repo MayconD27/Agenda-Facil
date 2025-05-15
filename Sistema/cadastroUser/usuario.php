@@ -1,6 +1,11 @@
 <?php
     include_once '../bd.php';
     $id = isset($_GET['id']) ? $_GET['id'] : false;
+    $message_update = "";
+    $update = isset($_GET['update']) ? $_GET['update'] : "";
+    if(!empty($update)){
+        $message_update = "Campo atualizado com sucesso";
+    }
     $sql = "SELECT id_user, nome, email, adm, ativo FROM usuario WHERE id_user = :id LIMIT 1";
 
     // Prepara a consulta
@@ -39,24 +44,24 @@
         include_once "../tools/menu.php";
     ?>
     <div class="main">
-                            
+            <p  class="full-width text-center"><?= $message_update; ?></p>                
             <h2 class="full-width text-center"><?=$nome_user?></h2>
         <div class="form-group p-5 row">
             <div class="col-12 mb-2">
                 <label>Nome do usuário</label>
-                <input class="form-control" name="nome" type="text" placeholder="Nome do usuário" value="<?=$nome_user?>">
+                <input class="form-control" name="nome" type="text" placeholder="Nome do usuário" value="<?=$nome_user?>" onchange="onUpdate(<?= $id;?>,'nome',this.value)">
             </div>
             <div class="col-12 col-md-6 mb-2">
                 <label>E-mail:</label>
-                <input class="form-control" name="email" type="email" placeholder="Email de acesso" value="<?=$email_user?>">
+                <input class="form-control" name="email" type="email" placeholder="Email de acesso" value="<?=$email_user?>" onchange="onUpdate(<?= $id;?>,'email',this.value)">
             </div>
             <div class="col-12 col-md-6 mb-2">
                 <label>Senha: </label>  
-                <input class="form-control" name="senha" type="password" placeholder="Senha" disabled>        
+                <input class="form-control" name="senha" type="password" placeholder="Senha" disabled onchange=" onUpdate(<?= $id;?>,'senha',this.value)">        
             </div>
             <div class="col-12 mb-2">
                 <label>Tipo de usuário</label>
-                <select name="tipo" class="form-control" value="1">
+                <select name="tipo" class="form-control" onchange="onUpdate(<?= $id;?>,'adm',this.value)">
                     <option value="">Selecione</option>
                     <option value="0"<?= $adm == 0 ? "selected" :"";?> >Usuário normal</option>
                     <option value="1" <?= $adm == 1 ? "selected" :"";?> >Usuario administrador</option>
@@ -73,5 +78,32 @@
             </p>
         </div>
     </div>
+<script>
+    async function onUpdate(id, field, value){
+        const response = await fetch(`./update.php?field=${field}&value=${value}&id=${id}`);
+        if(response.ok){
+            // Exibe mensagem com SweetAlert
+            Swal.fire({
+                icon: 'success',
+                title: 'Atualizado!',
+                text: 'Campo atualizado com sucesso',
+                timer: 2000,
+                showConfirmButton: false
+            });
+            setTimeout(() => {
+                window.location.reload();
+            }, 2100);
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Erro!',
+                text: 'Ocorreu um erro ao atualizar o campo',
+            });
+        
+        }
+        
+    }
+</script>
+
 </body>
 </html>

@@ -18,7 +18,11 @@
             </a>
             <a href="../cadastroUser">
                 <i class="bi bi-person-add"></i>
-                <span>Cadastro de usuários</span>
+                <span>Usuários</span>
+            </a>
+            <a href="../procedimento">
+                <i class="bi bi-boxes"></i>
+                <span>Procedimentos</span>
             </a>
         </nav>
         <div class="comands">

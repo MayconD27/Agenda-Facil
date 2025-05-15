@@ -1,31 +1,4 @@
 
-.cad-container{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 10px;
-    box-sizing: border-box;
-    min-width: none;
-    
-}
-
-.btn-container{
-    width: 100%;
-    height: 50px;
-    display: flex;
-    color: #fff;
-}
-.btn-container a{
-    width: 100%;
-    background-color: var(--primary-color);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 5px;
-    cursor: pointer;
-    text-decoration: none;
-    color: var(--bkg-color);
-}
 .users-container{
     display: flex;
     height: 90%;

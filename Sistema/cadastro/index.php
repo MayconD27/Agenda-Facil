@@ -6,6 +6,7 @@
                 header('location: ../Login');
                 exit;
             }
+            include_once '../bd.php';
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
