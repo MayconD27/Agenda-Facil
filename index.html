@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agenda Fácil</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style/index.css">
     <link rel="stylesheet" href="style/page.css">
 </head>
@@ -14,6 +15,64 @@
         </div>
     </main>
     <section class="main-container">
+        <form action="" method="post">
+            <div class="form-group">
+                <label>Nome: </label>
+                <input type="text" name="nome" class="form-control">
+            </div>
+            <div class="form-group">
+                <label>Telefone: </label>
+                <input type="text" name="telefone" class="form-control">
+            </div>
+            <div class="form-group">
+                <label>Procedimento: </label>
+                <select name="procedimento" id="" class="form-control"></select>
+            </div>
+            
+            
+            <div class="btn-group" role="group" aria-label="Seleção de hora">
+                <input type="radio" class="btn-check" name="horas" id="hora7" value="7" required>
+                <label class="btn btn-outline-teal" for="hora7">7h</label>
+
+                <input type="radio" class="btn-check" name="horas" id="hora8" value="8">
+                <label class="btn btn-outline-teal" for="hora8">8h</label>
+
+                <input type="radio" class="btn-check" name="horas" id="hora9" value="9">
+                <label class="btn btn-outline-teal" for="hora9">9h</label>
+
+                <input type="radio" class="btn-check" name="horas" id="hora10" value="10">
+                <label class="btn btn-outline-teal" for="hora10">10h</label>
+
+                <input type="radio" class="btn-check" name="horas" id="hora11" value="11">
+                <label class="btn btn-outline-teal" for="hora11">11h</label>
+
+                <input type="radio" class="btn-check" name="horas" id="hora12" value="12">
+                <label class="btn btn-outline-teal" for="hora12">12h</label>
+
+                <input type="radio" class="btn-check" name="horas" id="hora13" value="13">
+                <label class="btn btn-outline-teal" for="hora13">13h</label>
+
+                <input type="radio" class="btn-check" name="horas" id="hora14" value="14">
+                <label class="btn btn-outline-teal" for="hora14">14h</label>
+
+                <input type="radio" class="btn-check" name="horas" id="hora15" value="15">
+                <label class="btn btn-outline-teal" for="hora15">15h</label>
+
+                <input type="radio" class="btn-check" name="horas" id="hora16" value="16">
+                <label class="btn btn-outline-teal" for="hora16">16h</label>
+
+                <input type="radio" class="btn-check" name="horas" id="hora17" value="17">
+                <label class="btn btn-outline-teal" for="hora17">17h</label>
+
+                <input type="radio" class="btn-check" name="horas" id="hora18" value="18">
+                <label class="btn btn-outline-teal" for="hora18">18h</label>
+
+                <input type="radio" class="btn-check" name="horas" id="hora19" value="19">
+                <label class="btn btn-outline-teal" for="hora19">19h</label>
+            </div>
+            <button class="btn"> Cadastrar </button>
+        </form>
+
 
     </section>
     <footer></footer>
