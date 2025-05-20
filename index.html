@@ -15,7 +15,7 @@
         </div>
     </main>
     <section class="main-container">
-        <form action="" method="post">
+        <form action="./insert.php" method="post">
             <div class="form-group">
                 <label>Nome: </label>
                 <input type="text" name="nome" class="form-control">
@@ -25,56 +25,151 @@
                 <input type="text" name="telefone" class="form-control">
             </div>
             <div class="form-group">
+                <label>Data: </label>
+                <input name="data_agnd" type="date" class="form-control" onchange="carregarHorariosAgendados(this.value)">
+            </div>
+            <div class="form-group">
                 <label>Procedimento: </label>
-                <select name="procedimento" id="" class="form-control"></select>
+                <select name="procedimento" id="select_procedimento" class="form-control"></select>
             </div>
             
             
             <div class="btn-group" role="group" aria-label="Seleção de hora">
-                <input type="radio" class="btn-check" name="horas" id="hora7" value="7" required>
+                <input type="radio" class="btn-check" name="horas" id="hora7" value="07:00:00" required>
                 <label class="btn btn-outline-teal" for="hora7">7h</label>
 
-                <input type="radio" class="btn-check" name="horas" id="hora8" value="8">
+                <input type="radio" class="btn-check" name="horas" id="hora8" value="08:00:00">
                 <label class="btn btn-outline-teal" for="hora8">8h</label>
 
-                <input type="radio" class="btn-check" name="horas" id="hora9" value="9">
+                <input type="radio" class="btn-check" name="horas" id="hora9" value="09:00:00">
                 <label class="btn btn-outline-teal" for="hora9">9h</label>
 
-                <input type="radio" class="btn-check" name="horas" id="hora10" value="10">
+                <input type="radio" class="btn-check" name="horas" id="hora10" value="10:00:00">
                 <label class="btn btn-outline-teal" for="hora10">10h</label>
 
-                <input type="radio" class="btn-check" name="horas" id="hora11" value="11">
+                <input type="radio" class="btn-check" name="horas" id="hora11" value="11:00:00">
                 <label class="btn btn-outline-teal" for="hora11">11h</label>
 
-                <input type="radio" class="btn-check" name="horas" id="hora12" value="12">
+                <input type="radio" class="btn-check" name="horas" id="hora12" value="12:00:00">
                 <label class="btn btn-outline-teal" for="hora12">12h</label>
 
-                <input type="radio" class="btn-check" name="horas" id="hora13" value="13">
+                <input type="radio" class="btn-check" name="horas" id="hora13" value="13:00:00">
                 <label class="btn btn-outline-teal" for="hora13">13h</label>
 
-                <input type="radio" class="btn-check" name="horas" id="hora14" value="14">
+                <input type="radio" class="btn-check" name="horas" id="hora14" value="14:00:00">
                 <label class="btn btn-outline-teal" for="hora14">14h</label>
 
-                <input type="radio" class="btn-check" name="horas" id="hora15" value="15">
+                <input type="radio" class="btn-check" name="horas" id="hora15" value="15:00:00">
                 <label class="btn btn-outline-teal" for="hora15">15h</label>
 
-                <input type="radio" class="btn-check" name="horas" id="hora16" value="16">
+                <input type="radio" class="btn-check" name="horas" id="hora16" value="16:00:00">
                 <label class="btn btn-outline-teal" for="hora16">16h</label>
 
-                <input type="radio" class="btn-check" name="horas" id="hora17" value="17">
+                <input type="radio" class="btn-check" name="horas" id="hora17" value="17:00:00">
                 <label class="btn btn-outline-teal" for="hora17">17h</label>
 
-                <input type="radio" class="btn-check" name="horas" id="hora18" value="18">
+                <input type="radio" class="btn-check" name="horas" id="hora18" value="18:00:00">
                 <label class="btn btn-outline-teal" for="hora18">18h</label>
 
-                <input type="radio" class="btn-check" name="horas" id="hora19" value="19">
+                <input type="radio" class="btn-check" name="horas" id="hora19" value="19:00:00">
                 <label class="btn btn-outline-teal" for="hora19">19h</label>
             </div>
-            <button class="btn"> Cadastrar </button>
+            <button class="btn" type="submit"> Cadastrar </button>
         </form>
 
 
     </section>
     <footer></footer>
+    <script>
+function reload() {
+    fetch('procedimentos.php')
+        .then(response => response.json())
+        .then(data => {
+            const select = document.getElementById('select_procedimento');
+            select.innerHTML = '<option value="">Selecione um procedimento</option>';
+
+            if (data.status === 'success') {
+                data.data.forEach(item => {
+                    const option = document.createElement('option');
+                    option.value = item.id;
+                    option.textContent = `${item.procedimento}`;
+                    select.appendChild(option);
+                });
+            } else {
+                alert('Erro ao carregar procedimentos: ' + data.message);
+            }
+        })
+        .catch(error => {
+            console.error('Erro na requisição:', error);
+            alert('Erro ao conectar com a API.');
+        });
+}
+
+// Chamada automática ao carregar a página
+document.addEventListener('DOMContentLoaded', () => {
+    reload();
+    renderizarHorarios([]); // inicializa radios
+});
+
+function carregarHorariosAgendados(data) {
+    fetch(`check.php?data=${data}`)
+        .then(res => res.json())
+        .then(json => {
+            if (json.status === 'success') {
+                const horariosOcupados = json.data; // array com horários "HH:00:00"
+                renderizarHorarios(horariosOcupados);
+            } else {
+                renderizarHorarios([]);
+                alert('Erro ao carregar agendamentos: ' + json.message);
+            }
+        })
+        .catch(() => {
+            renderizarHorarios([]);
+            alert('Erro ao conectar com o servidor.');
+        });
+}
+
+function renderizarHorarios(horariosOcupados) {
+    const container = document.querySelector('.btn-group');
+    container.innerHTML = ''; // limpa radios atuais
+
+    // Horários de 7h às 19h
+    for (let hora = 7; hora <= 19; hora++) {
+        // Formata hora completa com minutos e segundos "HH:00:00"
+        const horaCompleta = (hora < 10 ? '0' : '') + hora + ':00:00';
+
+        // Cria o input radio
+        const input = document.createElement('input');
+        input.type = 'radio';
+        input.className = 'btn-check';
+        input.name = 'horas';
+        input.id = 'hora' + hora;
+        input.value = horaCompleta;
+        input.required = true;
+
+        // Desabilita se horário estiver ocupado
+        if (horariosOcupados.includes(horaCompleta)) {
+            input.disabled = true;
+        }
+
+        // Cria o label
+        const label = document.createElement('label');
+        label.className = 'btn btn-outline-teal';
+        label.htmlFor = 'hora' + hora;
+        label.textContent = hora + 'h';
+
+        // Se o input estiver desabilitado, adiciona classe para estilizar (opcional)
+        if (input.disabled) {
+            label.classList.add('disabled');
+        }
+
+        // Adiciona ao container
+        container.appendChild(input);
+        container.appendChild(label);
+    }
+}
+</script>
+
+
 </body>
 </html>

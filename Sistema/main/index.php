@@ -57,7 +57,7 @@
                 <?php
                     include_once '../bd.php';  
 
-                    $stmt = $bd->prepare("SELECT * FROM agendamento WHERE data = :data_agend");
+                    $stmt = $bd->prepare("SELECT DISTINCT id_agenda,  procedimento.procedimento,horario, telefone, qnt_horario, nome_cliente FROM agendamento LEFT JOIN procedimento ON procedimento_id = procedimento.id WHERE data = :data_agend");
                     $stmt->execute([':data_agend' => $data]);
                     $agendamentos = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     

@@ -23,3 +23,10 @@ footer{
     width: 100%;
     height: 90px;
 }
+.btn-outline-teal:disabled,
+.btn-check:disabled + .btn-outline-teal {
+    color: #9e9e9e !important;             /* cinza escuro */
+    border-color: #ccc !important;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
