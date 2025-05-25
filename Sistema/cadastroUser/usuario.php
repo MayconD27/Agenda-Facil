@@ -53,11 +53,14 @@
             </div>
             <div class="col-12 col-md-6 mb-2">
                 <label>E-mail:</label>
-                <input class="form-control" name="email" type="email" placeholder="Email de acesso" value="<?=$email_user?>" onchange="onUpdate(<?= $id;?>,'email',this.value)">
+                <input class="form-control" nam-e="email" type="email" placeholder="Email de acesso" value="<?=$email_user?>" onchange="onUpdate(<?= $id;?>,'email',this.value)">
             </div>
             <div class="col-12 col-md-6 mb-2">
-                <label>Senha: </label>  
-                <input class="form-control" name="senha" type="password" placeholder="Senha" disabled onchange=" onUpdate(<?= $id;?>,'senha',this.value)">        
+                <label>Senha: </label> 
+                <div class="row">
+                    <input id="password" class="form-control col" style="margin-right:10px;" name="senha" type="password" placeholder="Senha" disabled onclick="HabilitInput()" onchange="onUpdate(<?= $id;?>,'senha',this.value)">        
+                    <button class="btn btn-primary rounded-circle col-auto" style="border:none; width:40px; height:40px;" onclick="HabilitInput()"><i class="bi bi-pencil-square"></i></button>     
+                </div> 
             </div>
             <div class="col-12 mb-2">
                 <label>Tipo de usuário</label>
@@ -68,7 +71,7 @@
                 </select>
             </div>
             <div class="col-12 d-flex form-check form-switch justify-content-end" style="gap:10px;">
-                <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" <?= $ativo ? "checked" : ""?> >
+                <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" <?= $ativo ? "checked" : ""?> onchange="onUpdate(<?= $id;?>,'ativo',this.checked ? 1: 0)">
                 <label class="form-check-label">Ativo</label>
             </div>
             <p class="col-12 text-center info-update">
@@ -102,6 +105,11 @@
         
         }
         
+    }
+    function HabilitInput(){
+        console.log('1')
+        const password = document.querySelector("#password");
+        password.removeAttribute("disabled");
     }
 </script>
 

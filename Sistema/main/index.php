@@ -6,17 +6,17 @@
     <title>Tela inicial</title>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> 
     <link rel="stylesheet" href="../main-style/index.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href=" 	https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../main-style/inicio.css">
     <link rel="stylesheet" href="../main-style/menu.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href=" 	https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    
 </head>
 <body>
     <?php
         date_default_timezone_set('America/Sao_Paulo');
-        $data = isset($_POST['date']) ? $_POST['date'] : date('Y-m-d');
-
+        $data = !empty($_POST['date']) ? $_POST['date'] : date('Y-m-d');
         include_once '../bd.php';
         session_start();
         $usuarioLogado = isset($_SESSION['logado']) ?  $_SESSION['logado'] : false;
@@ -30,12 +30,18 @@
     ?>
     
     <main class="container-main">
-        <button class="btn filter" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Filtrar">
+        <button class="btn filter" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Filtrar" onclick="habiliteFilter()">
             <i class="bi bi-funnel-fill"></i>
         </button>
         <a href="../cadastro" class="btn-cadastro" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Cadastrar agendamento">
             <h5>Cadastrar</h5> <i class="bi bi-plus-lg"></i>
         </a>
+        <form id="filter-form" method="POST" action="" class="collapse p-2" style="width:100%;">
+            <div class="form-group row justify-content-center">
+                <input type="date" class="form-control col" name="date" style="margin-right:10px">
+                <button type="submit" class="col-auto btn btn-primary" style="background-color: var(--second-color); border: none"><i class="bi bi-search"></i></button>
+            </div>
+        </form>
         <h5 class="timer">
             <?php
                 $dateObject = DateTime::createFromFormat('Y-m-d', $data);
@@ -128,11 +134,18 @@
 
 
 <script>
+  let cont = 0;
   var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
   tooltipTriggerList.map(function (tooltipTriggerEl) {
     return new bootstrap.Tooltip(tooltipTriggerEl);
   });
 
+function habiliteFilter(){
+
+    let form = document.querySelector("#filter-form");
+    form.classList.contains('collapse') ? form.classList.remove('collapse') : form.classList.add('collapse');
+
+}
 
 function Deletar(id){
     Swal.fire({
@@ -154,7 +167,6 @@ function Deletar(id){
     }
     });
 }
-  
 </script>
  
 
