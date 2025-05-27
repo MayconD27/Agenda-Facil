@@ -10,14 +10,15 @@
 
     //infoAgendamento
     $procedimento = $_POST['procedimento'];
+    echo $procedimento;
     $data = $_POST['dataCadastro'];
     $horario = $_POST['horario'];
     $qntAgend = $_POST['qntHorario'];
 
     include_once '../bd.php';
+ 
 
-        
-        $stmtInsertAgnd = $bd->prepare("INSERT INTO agendamento (procedimento, data, horario, qnt_horario, nome_cliente, telefone) VALUES (:procedimento, :data_agend, :horario, :qnt_h, :nomeCli, :tel)");
+        $stmtInsertAgnd = $bd->prepare("INSERT INTO agendamento (procedimento_id, data, horario, qnt_horario, nome_cliente, telefone) VALUES (:procedimento, :data_agend, :horario, :qnt_h, :nomeCli, :tel)");
 
         // Colocar o Parâmetro
         $stmtInsertAgnd->bindParam(':procedimento', $procedimento);

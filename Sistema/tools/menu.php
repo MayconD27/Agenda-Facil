@@ -1,3 +1,10 @@
+<?php
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+        
+        $isAdm = isset($_SESSION['adm']) && $_SESSION['adm'] == 0;
+?>
 <div class="menu">
     <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop" aria-controls="staticBackdrop">
         <i class="bi bi-list"></i>
@@ -16,17 +23,22 @@
                 <i class="bi bi-house"></i>
                 <span>Inicio</span>
             </a>
-            <a href="../cadastroUser">
-                <i class="bi bi-person-add"></i>
-                <span>Usuários</span>
-            </a>
-            <a href="../procedimento">
-                <i class="bi bi-boxes"></i>
-                <span>Procedimentos</span>
-            </a>
+
+            <?php
+                if($isAdm){
+            ?>
+                <a href="../cadastroUser">
+                    <i class="bi bi-person-add"></i>
+                    <span>Usuários</span>
+                </a>
+                <a href="../procedimento">
+                    <i class="bi bi-boxes"></i>
+                    <span>Procedimentos</span>
+                </a>
+            <?php }?>
         </nav>
         <div class="comands">
-            <a href="">Nome do usuário</a>
+            <a href=""> <?= $_SESSION['nome'] ?> </a>
             <a href="../logout.php">
                 <i class="bi bi-box-arrow-left"></i>
                 <span>Sair</span>

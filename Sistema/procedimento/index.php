@@ -1,12 +1,19 @@
 <?php
-    include_once '../bd.php';
-    session_start();
-    $usuarioLogado = isset($_SESSION['logado']) ?  $_SESSION['logado'] : false;
+        include_once '../bd.php';
+        session_start();
+        $usuarioLogado = isset($_SESSION['logado']) ?  $_SESSION['logado'] : false;
 
-    if($usuarioLogado== false){
-        header('location: ../Login');
-        exit;
-    }
+        if($usuarioLogado== false){
+            header('location: ../Login');
+            exit;
+        }
+       $isAdm = isset($_SESSION['adm']) && intval($_SESSION['adm']) === 0;
+        if(!
+        $isAdm){
+            header('location: ../main');
+            exit;
+        }
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">

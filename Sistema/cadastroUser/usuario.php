@@ -1,5 +1,21 @@
 <?php
-    include_once '../bd.php';
+        include_once '../bd.php';
+        session_start();
+        $usuarioLogado = isset($_SESSION['logado']) ?  $_SESSION['logado'] : false;
+
+        if($usuarioLogado== false){
+            header('location: ../Login');
+            exit;
+        }
+       $isAdm = isset($_SESSION['adm']) && intval($_SESSION['adm']) == 0  ?  true : false;
+        if($isAdm== false){
+            header('location: ../main');
+            exit;
+        }
+
+?>
+<?php
+
     $id = isset($_GET['id']) ? $_GET['id'] : false;
     $message_update = "";
     $update = isset($_GET['update']) ? $_GET['update'] : "";

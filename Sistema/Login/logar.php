@@ -31,7 +31,10 @@
         $_SESSION['logado'] = true;
         $_SESSION['nome'] = $registros[0]['nome'];
         $_SESSION['id'] = $registros[0]['id_user'];
+        $_SESSION['adm'] = $registros[0]['adm'];
         
+
+
         // Redireciona para a página inicial
         header('location: ../');
         exit;

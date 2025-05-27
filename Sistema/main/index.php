@@ -20,7 +20,7 @@
         include_once '../bd.php';
         session_start();
         $usuarioLogado = isset($_SESSION['logado']) ?  $_SESSION['logado'] : false;
-
+        $isAdm = isset($_SESSION['adm']) && intval($_SESSION['adm']) == 0  ?  true : false;
         if($usuarioLogado== false){
             header('location: ../Login');
             exit;
@@ -28,7 +28,7 @@
     //Tools
     include_once "../tools/menu.php";              
     ?>
-    
+
     <main class="container-main">
         <button class="btn filter" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Filtrar" onclick="habiliteFilter()">
             <i class="bi bi-funnel-fill"></i>

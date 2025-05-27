@@ -29,6 +29,8 @@
 
 
     $stmtInsertAgnd->execute();
+    header('location: ./');
+    exit;
 
     
 ?>
